@@ -24,10 +24,7 @@ namespace OutBoxPattern.Command.Handler
         {   
             var pedido = Map(message);
             var outbox = ToOutboxMessage(message);
-            // Adicionar Evento
-            //pedido.AdicionarEvento(new PedidoRealizadoEvent(pedido.Id, pedido.ClienteId));
 
-            // Adicionar Pedido Repositorio
             await _pedidoRepository.Adicionar(pedido);
             await _outBoxMessageRepository.Adicionar(outbox);
 
